@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Checkpoints
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.safetensors
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Experiment results (keep structure, ignore large files)
+results/*.json
+results/*.csv
+!results/.gitkeep
+
+# Figures (keep structure, ignore large files)
+figures/*.png
+figures/*.pdf
+!figures/.gitkeep
+
+# Human annotation data (sensitive)
+human_data/
+
+# API keys
+*.key
+*.api_key

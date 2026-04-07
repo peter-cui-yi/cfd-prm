@@ -1,0 +1,349 @@
+% ============================================================================
+% Bibliography for "From Explanations to Evidence: A Survey of Verifiable
+% Visual Chain-of-Thought and Agentic Multimodal Reasoning (2024–Present)"
+% Last Updated: 2026-03-10
+% Total entries: 41
+% ============================================================================
+
+% ============================================================================
+% FOUNDATIONAL WORK (Pre-2024, cited in Background)
+% ============================================================================
+
+@inproceedings{wei2022cot,
+  title     = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  author    = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Xia, Fei and Chi, Ed and Le, Quoc V and Zhou, Denny and others},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2022}
+}
+
+@inproceedings{yao2023react,
+  title     = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
+  author    = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2023}
+}
+
+@inproceedings{wang2023selfconsistency,
+  title   = {Self-Consistency Improves Chain of Thought Reasoning in Language Models},
+  author  = {Wang, Xuezhi and Wei, Jason and Schuurmans, Dale and Le, Quoc and Chi, Ed and Zhou, Denny and others},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2023}
+}
+
+@inproceedings{lightman2023prm,
+  title     = {Let's Verify Step by Step},
+  author    = {Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harrison and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}
+}
+
+@inproceedings{vipergpt2023,
+  title     = {{ViperGPT}: Visual Inference via {Python} Execution for Reasoning},
+  author    = {Sur{\'i}s, D{\'i}dac and Menon, Sachit and Vondrick, Carl},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages     = {11888--11898},
+  year      = {2023}
+}
+
+@article{mmreact2023,
+  title   = {{MM-REACT}: Prompting {ChatGPT} for Multimodal Reasoning and Action},
+  author  = {Yang, Zhengyuan and Li, Linjie and Wang, Jianfeng and Lin, Kevin and Azarnasab, Ehsan and Ahmed, Faisal and Liu, Zicheng and Liu, Ce and Zeng, Michael and Wang, Lijuan},
+  journal = {arXiv preprint arXiv:2303.11381},
+  year    = {2023}
+}
+
+% ============================================================================
+% QUADRANT I: TEXT-ONLY COT (2024–Present)
+% ============================================================================
+
+@inproceedings{cure2024,
+  title     = {{CURE}: Improving Visual Chain-of-Thought Reasoning through Consistency and Reflection},
+  author    = {Chen, Yangyi and others},
+  booktitle = {Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics},
+  year      = {2024},
+  note      = {Quadrant I anchor paper}
+}
+
+@inproceedings{llava_cot2024,
+  title     = {{LLaVA-CoT}: Let Vision Language Models Reason Step-by-Step},
+  author    = {Xu, Guowei and Jin, Peng and Wu, Ziang and Li, Hao and Song, Yibing and Sun, Lichao and Yuan, Li},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year      = {2025},
+  eprint    = {2411.10440},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{r3v2025,
+  title     = {Vision-Language Models Can Self-Improve Reasoning via Reflection},
+  author    = {Cheng, Kanzhi and others},
+  booktitle = {Proceedings of the 2025 Conference of the North American Chapter of the Association for Computational Linguistics},
+  year      = {2025},
+  eprint    = {2411.00855},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{sherlock2025,
+  title     = {Sherlock: Self-Correcting Reasoning in Vision-Language Models},
+  author    = {Ding, Yi and Zhang, Ruqi},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  eprint    = {2505.22651},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{criticv2025,
+  title     = {Critic-V: {VLM} Critics Help Catch {VLM} Errors in Multimodal Reasoning},
+  author    = {Zhang, Di and Li, Junxian and Lei, Jingdi and Wang, Xunzhi and Liu, Yujie and Yang, Zonglin and Li, Jiatong and Wang, Weida and Yang, Suorong and Wu, Jianbo and Ye, Peng and Ouyang, Wanli and Zhou, Dongzhan},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2025},
+  eprint    = {2411.18203},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{scl2025,
+  title     = {Self-Correction is More than Refinement: A Learning Framework for Visual and Language Reasoning Tasks},
+  author    = {He, Jiayi and Lin, Hehai and Wang, Qingyun and Fung, Yi and Ji, Heng},
+  booktitle = {Findings of the Association for Computational Linguistics},
+  year      = {2025},
+  eprint    = {2410.04055},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{visualcot2024,
+  title     = {Visual {CoT}: Advancing Multi-Modal Language Models with a Comprehensive Dataset and Benchmark for Chain-of-Thought Reasoning},
+  author    = {Shao, Hao and Qian, Shengju and Xiao, Han and Song, Guanglu and Zong, Zhuofan and Wang, Letian and Liu, Yu and Li, Hongsheng},
+  booktitle = {Advances in Neural Information Processing Systems, Datasets and Benchmarks Track},
+  year      = {2024}
+}
+
+@inproceedings{improvevlmcot2025,
+  title     = {Improve Vision Language Model Chain-of-thought Reasoning},
+  author    = {Zhang, Ruohong and Zhang, Bowen and Li, Yanghao and Zhang, Haotian and Sun, Zhiqing and Gan, Zhe and Yang, Yinfei and Pang, Ruoming and Yang, Yiming},
+  booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics},
+  year      = {2025},
+  eprint    = {2410.16198},
+  archivePrefix = {arXiv}
+}
+
+@article{rcot2024,
+  title   = {R-{CoT}: Reverse Chain-of-Thought Problem Generation for Geometric Reasoning in Large Multimodal Models},
+  author  = {Deng, Linger and Zhu, Linghao and Liu, Yuliang and Wang, Yu and Xie, Qunyi and Wu, Jingjing and Zhang, Gang and Zhu, Yingying and Bai, Xiang},
+  journal = {arXiv preprint arXiv:2410.17885},
+  year    = {2024}
+}
+
+@article{visualprm2025,
+  title   = {{VisualPRM}: An Effective Process Reward Model for Multimodal Reasoning},
+  author  = {Wang, Weiyun and Gao, Zhangwei and Chen, Lianjie and Chen, Zhe and Zhu, Jinguo and Zhao, Xiangyu and Liu, Yangzhou and Cao, Yue and Ye, Shenglong and Zhu, Xizhou and Lu, Lewei and Duan, Haodong and Qiao, Yu and Dai, Jifeng and Wang, Wenhai},
+  journal = {arXiv preprint arXiv:2503.10291},
+  year    = {2025}
+}
+
+@article{insightv2024,
+  title   = {Insight-V: Exploring Long-Chain Visual Reasoning with Multimodal Large Language Models},
+  author  = {Dong, Yuhao and Liu, Zuyan and Sun, Hai-Long and Yang, Jingkang and Hu, Winston and Rao, Yongming and Liu, Ziwei},
+  journal = {arXiv preprint arXiv:2411.14432},
+  year    = {2024}
+}
+
+% ============================================================================
+% QUADRANT II: TEXT + TOOLS (2024–Present)
+% ============================================================================
+
+@inproceedings{videoagent2024,
+  title     = {{VideoAgent}: A Memory-augmented Multimodal Agent for Video Understanding},
+  author    = {Fan, Yue and Ma, Xiaojian and Wu, Rujie and Du, Yuntao and Li, Jiaqi and Gao, Zhi and Li, Qing},
+  booktitle = {European Conference on Computer Vision},
+  year      = {2024},
+  eprint    = {2403.11481},
+  archivePrefix = {arXiv},
+  note      = {Quadrant II anchor paper}
+}
+
+@inproceedings{adareasoner2026,
+  title     = {{AdaReasoner}: Dynamic Tool Orchestration for Iterative Visual Reasoning},
+  author    = {Song, Mingyang and Sun, Haoyu and Gu, Jiawei and Li, Linjie and Xu, Luxin and Krishna, Ranjay and Cheng, Yu},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2026},
+  eprint    = {2601.18631},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{optimus2024,
+  title     = {{Optimus-1}: Hybrid Multimodal Memory Empowered Agents Excel in Long-Horizon Tasks},
+  author    = {Li, Zaijing and Xie, Yuquan and Shao, Rui and Chen, Gongwei and Jiang, Dongmei and Nie, Liqiang},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2024},
+  eprint    = {2408.03615},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{doraemongpt2024,
+  title     = {{DoraemonGPT}: Toward Understanding Dynamic Scenes with Large Language Models},
+  author    = {Shi, Zhuoran and Shao, Guangcong and Li, Pengfei and Sheng, Lu and Wang, Jingdong},
+  booktitle = {International Conference on Machine Learning},
+  year      = {2024}
+}
+
+@article{hammr2024,
+  title   = {{HAMMR}: Hierarchical {MultiModal} {ReAct} for Generic {VQA}},
+  author  = {Tarun, Aniket and others},
+  journal = {NeurIPS 2024 Workshop},
+  year    = {2024}
+}
+
+@inproceedings{webvoyager2024,
+  title     = {{WebVoyager}: Building an End-to-End Web Agent with Large Multimodal Models},
+  author    = {He, Hongliang and Yao, Wenlin and Ma, Kaixin and Yu, Wenhao and Dai, Yong and Zhang, Hongming and Lan, Zhenzhong and Yu, Dong},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics},
+  year      = {2024}
+}
+
+@inproceedings{seeact2024,
+  title     = {{GPT-4V(ision)} is a Generalist Web Agent, if Grounded},
+  author    = {Zheng, Boyuan and Gou, Boyu and Kil, Jihyung and Sun, Huan and Su, Yu},
+  booktitle = {International Conference on Machine Learning},
+  year      = {2024}
+}
+
+@inproceedings{octotools2025,
+  title     = {{OctoTools}: An Agentic Framework with Extensible Tools for Complex Reasoning},
+  author    = {Lu, Pan and others},
+  booktitle = {ICLR 2025 Workshop},
+  year      = {2025}
+}
+
+@inproceedings{assistgui2024,
+  title     = {{AssistGUI}: Task-Oriented {PC} Graphical User Interface Automation},
+  author    = {Gao, Difei and Ji, Lei and Bai, Zechen and Ouyang, Mingyu and Li, Peiran and Mao, Dongxing and Wu, Qinchen and Zhang, Weichen and Wang, Peiyi and Guo, Xiangwu and Wang, Hengxu and Zhou, Luowei and Shou, Mike Zheng},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2024}
+}
+
+@inproceedings{cogagent2024,
+  title     = {{CogAgent}: A Visual Language Model for {GUI} Agents},
+  author    = {Hong, Wenyi and Wang, Weihan and Lv, Qingsong and Xu, Jiazheng and Yu, Wenmeng and Ji, Junhui and Wang, Yan and Wang, Zihan and Zhang, Yuxuan and Li, Juanzi and Xu, Bin and Dong, Yuxiao and Ding, Ming and Tang, Jie},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2024}
+}
+
+% ============================================================================
+% QUADRANT III: STRUCTURED w/o TOOLS (2024–Present)
+% ============================================================================
+
+@article{mcout2025,
+  title   = {{MCOUT}: Multimodal Continuous Thought for Visual Reasoning},
+  author  = {TBD},
+  journal = {arXiv preprint},
+  year    = {2025},
+  note    = {Quadrant III anchor paper}
+}
+
+@inproceedings{ccot2024,
+  title     = {Compositional Chain-of-Thought Prompting for Large Multimodal Models},
+  author    = {Mitra, Chancharik and Huang, Brandon and Darrell, Trevor and Herzig, Roei},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2024}
+}
+
+@article{covt2025,
+  title   = {Chain-of-Visual-Thought: Teaching {VLMs} to See and Think Better with Continuous Visual Tokens},
+  author  = {Qin, Y. and Wei, B. and Ge, J. and others},
+  journal = {arXiv preprint arXiv:2511.19418},
+  year    = {2025}
+}
+
+@article{lare2025,
+  title   = {{LaRe}: Latent Refocusing for Visual Reasoning},
+  author  = {TBD},
+  journal = {arXiv preprint},
+  year    = {2025}
+}
+
+@article{dmlr2025,
+  title   = {{DMLR}: Dynamic Multimodal Latent Reasoning},
+  author  = {TBD},
+  journal = {arXiv preprint},
+  year    = {2025}
+}
+
+@article{llavasg2024,
+  title   = {{LLaVA-SG}: Leveraging Scene Graphs as Visual Semantic Expression in Vision-Language Models},
+  author  = {Wang, Jingyi and Ju, Jianzhong and Luan, Jian and Deng, Zhidong},
+  journal = {arXiv preprint arXiv:2408.16224},
+  year    = {2024}
+}
+
+@article{coconut2024,
+  title   = {Training Large Language Models to Reason in a Continuous Latent Space},
+  author  = {Hao, Shibo and Sukhbaatar, Sainbayar and Su, DiJia and Li, Xian and Hu, Zhiting and Weston, Jason and Tian, Yuandong},
+  journal = {arXiv preprint arXiv:2412.06769},
+  year    = {2024}
+}
+
+% ============================================================================
+% QUADRANT IV: STRUCTURED + TOOLS / EXECUTABLE (2024–Present)
+% ============================================================================
+
+@inproceedings{visualsketchpad2024,
+  title     = {Visual Sketchpad: Sketching as a Visual Chain of Thought for Multimodal Language Models},
+  author    = {Hu, Yushi and others},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2024},
+  eprint    = {2406.09403},
+  archivePrefix = {arXiv},
+  note      = {Quadrant IV anchor paper}
+}
+
+@article{deepeyesv2_2025,
+  title   = {{DeepEyesV2}: Toward Agentic Multimodal Model},
+  author  = {Hong, Jack and others},
+  journal = {arXiv preprint arXiv:2511.05271},
+  year    = {2025},
+  note    = {Quadrant IV anchor paper}
+}
+
+@inproceedings{vdebugger2024,
+  title     = {{VDebugger}: Harnessing Execution Feedback for Debugging Visual Programs},
+  author    = {Wu, Xueqing and others},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2024},
+  year      = {2024},
+  eprint    = {2406.13444},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{virep2024,
+  title     = {Self-Training Large Language Models for Improved Visual Program Synthesis With Visual Reinforcement},
+  author    = {Khan, Zaid and Kumar BG, Vijay and Schulter, Samuel and Fu, Yun and Chandraker, Manmohan},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages     = {14344--14353},
+  year      = {2024}
+}
+
+@article{recode2025,
+  title   = {{RECODE}: Reasoning Through Code Generation for Visual Question Answering},
+  author  = {Shen, Junhong and others},
+  journal = {arXiv preprint arXiv:2510.13756},
+  year    = {2025}
+}
+
+@article{codev2025,
+  title   = {{CodeV}: Code with Images for Faithful Visual Reasoning via Tool-Aware Policy Optimization},
+  author  = {Hou, Xinhai and others},
+  journal = {arXiv preprint arXiv:2511.19661},
+  year    = {2025}
+}
+
+@article{codedance2025,
+  title   = {{CodeDance}: A Dynamic Tool-integrated {MLLM} for Executable Visual Reasoning},
+  author  = {Song, Qi and others},
+  journal = {arXiv preprint arXiv:2512.17312},
+  year    = {2025}
+}
+
+@article{codevision2025,
+  title   = {Thinking with Programming Vision: Towards a Unified View for Thinking with Images},
+  author  = {Guo, Zirun and Hong, Minjie and Zhang, Feng and Jia, Kai and Jin, Tao},
+  journal = {arXiv preprint},
+  year    = {2025}
+}
