@@ -187,9 +187,34 @@ python -m cfd_prm.eval.intervention \
 
 | Dataset | Metric | Target |
 |---------|--------|--------|
-| VisualPRM400K test | AUROC@t* | > 0.75 |
-| PRM800K (OOD) | AUROC | > 0.65 |
+| VisualPRM400K test | First-Error AUROC | > 0.75 |
+| PRM800K (OOD) | First-Error AUROC | > 0.65 |
 | Best-of-N reranking | Success rate | +5% |
+
+---
+
+## Evaluation Strategy: Dual-Track Assessment
+
+**CFD-PRM focuses on first-error detection, while VisualPRM optimizes for all-error detection.**
+
+### Track 1: First-Error Detection (CFD-PRM Primary)
+
+| Metric | Definition |
+|--------|------------|
+| **First-Error AUROC** | Ability to identify t* (first error) |
+| **t* Localization Accuracy** | \|pred_t* - true_t*\| ≤ 1 |
+| **Label Efficiency** | Trajectories to reach AUROC threshold |
+
+### Track 2: All-Error Detection (Secondary, for completeness)
+
+| Metric | Definition |
+|--------|------------|
+| **Per-Step AUROC** | Average AUROC across all steps |
+| **All-Error F1** | F1 for detecting all erroneous steps |
+
+**Note**: VisualPRM wins Track 2, CFD-PRM wins Track 1. Both are valid contributions.
+
+See `cfd_prm/eval/EVALUATION_PROTOCOL.md` for details.
 
 ---
 
