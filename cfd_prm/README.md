@@ -118,17 +118,20 @@ else:
 
 ### Installation
 
+From the **repository root** (parent of the `cfd_prm/` package):
+
 ```bash
-git clone https://github.com/peter-cui-yi/cfd-prm.git
-cd cfd-prm
-pip install -r requirements.txt
+git clone <this-repository-url>
+cd <repo-root>
+pip install -r cfd_prm/requirements.txt
 ```
 
 ### Data Setup
 
 ```bash
-# Download and convert VisualPRM400K
-./scripts/setup_visualprm400k.sh
+# From repository root — script cds to repo root if invoked from elsewhere
+chmod +x cfd_prm/scripts/setup_visualprm400k.sh
+./cfd_prm/scripts/setup_visualprm400k.sh
 ```
 
 ### Training
@@ -222,30 +225,34 @@ See `cfd_prm/eval/EVALUATION_PROTOCOL.md` for details.
 
 ```
 cfd_prm/
+├── README.md                 # This file
+├── requirements.txt
+├── configs/                  # e.g. train_cfd_prm.yaml
+├── docs/                     # Setup guides, experiment plans, ideas
+├── refine-logs/              # Proposal refinements, experiment trackers, rounds
+├── scripts/
+│   ├── setup_visualprm400k.sh
+│   ├── setup_visualwebarena.sh
+│   ├── train.sh
+│   └── eval.sh
 ├── models/
 │   └── step_scorer.py        # Qwen2.5-VL + LoRA
 ├── losses/
 │   ├── checkpoint_first_divergence.py  # Core loss
 │   └── calibration_loss.py   # Cross-trajectory calibration
 ├── data/
-│   ├── visualprm400k_adapter.py  # Data conversion
-│   ├── dataset.py            # DataLoader
+│   ├── visualprm400k_adapter.py
+│   ├── dataset.py
 │   └── hard_negative_miner.py
 ├── eval/
 │   ├── discriminative_metrics.py
-│   └── intervention.py
+│   ├── intervention.py
+│   └── EVALUATION_PROTOCOL.md
 ├── train.py
-└── experiments/              # Theory validation scripts
-
-scripts/
-├── setup_visualprm400k.sh
-├── train.sh
-└── eval.sh
-
-refine-logs/
-├── FINAL_PROPOSAL_v6_VisualPRM.md
-└── EXPERIMENT_PLAN_v5_VWA.md
+└── experiments/
 ```
+
+The survey paper and literature notes live in `../survey/` (see repository root `README.md`).
 
 ---
 

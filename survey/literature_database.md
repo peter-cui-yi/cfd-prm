@@ -4,9 +4,9 @@
 
 This document tracks all papers for the survey "From Explanations to Evidence: A Survey of Verifiable Visual Chain-of-Thought and Agentic Multimodal Reasoning (2024–Present)"
 
-**Total Papers**: 82 (All analyzed ✅)
+**Total Papers**: 89 (world-model branch extended across mobile, web, and computer-use; all notes present)
 
-**Last Updated**: 2026-03-12 (Round 3: +15 latest arXiv preprints from 2025.05–2026.03)
+**Last Updated**: 2026-04-15 (Targeted world-model passes: +7 integrated papers)
 
 ---
 
@@ -28,11 +28,11 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 | 9 | **Improve VLM CoT** | ACL 2025 | 2024 | DPO + process-supervision to improve VLM CoT faithfulness | `ImproveVLMCoT_2024_QuadrantI.md` | ✅ |
 | 10 | **R-CoT / TR-CoT** | arXiv 2024 | 2024 | Reverse CoT problem generation for geometric reasoning | `R-CoT_2024_QuadrantI.md` | ✅ |
 | 11 | **VisualPRM** | arXiv 2025 | 2025 | Process Reward Model for multimodal reasoning (step-level scoring) | `VisualPRM_2025_QuadrantI.md` | ✅ |
-| 12 | **R1-VL** | ICCV 2025 | 2025 | Step-wise GRPO with StepRAR + StepRVR process rewards for MLLM reasoning | *(note pending)* | ⏳ |
-| 13 | **Visionary-R1** | arXiv 2025 | 2025 | Structured caption→reason→answer format + GRPO to prevent RL shortcuts | *(note pending)* | ⏳ |
-| 14 | **Journey Before Destination** | arXiv 2025 | 2025 | First systematic analysis of visual faithfulness in CoT; perception-step self-correction | *(note pending)* | ⏳ |
-| 15 | **OpenVLThinker** | NeurIPS 2025 | 2025 | Iterative SFT-RL cycles for math/science visual reasoning | *(note pending)* | ⏳ |
-| 16 | **LLaVA-Critic-R1** | arXiv 2025 | 2025 | Self-critique test-time scaling; critic-as-policy unified model | *(note pending)* | ⏳ |
+| 12 | **R1-VL** | ICCV 2025 | 2025 | Step-wise GRPO with StepRAR + StepRVR process rewards for MLLM reasoning | `R1VL_2025_QuadrantI.md` | ✅ |
+| 13 | **Visionary-R1** | arXiv 2025 | 2025 | Structured caption→reason→answer format + GRPO to prevent RL shortcuts | `Visionary-R1_2025_QuadrantI.md` | ✅ |
+| 14 | **Journey Before Destination** | arXiv 2025 | 2025 | First systematic analysis of visual faithfulness in CoT; perception-step self-correction | `JourneyBeforeDestination_2025_QuadrantI.md` | ✅ |
+| 15 | **OpenVLThinker** | NeurIPS 2025 | 2025 | Iterative SFT-RL cycles for math/science visual reasoning | `OpenVLThinker_2025_QuadrantI.md` | ✅ |
+| 16 | **LLaVA-Critic-R1** | arXiv 2025 | 2025 | Self-critique test-time scaling; critic-as-policy unified model | `LLaVA-Critic-R1_2025_QuadrantI.md` | ✅ |
 | 17 | **ChainV** | arXiv 2025 | 2025-11 | Atomic visual hints + consistency evaluation; shorter/better reasoning | `ChainV_2025_QuadrantI.md` | 🆕 |
 | 18 | **VisReason** | arXiv 2025 | 2025-11 | 489K visual CoT dataset + 165K VisReason-Pro expert subset | `VisReason_2025_QuadrantI.md` | 🆕 |
 | 19 | **MIRA** | arXiv 2025 | 2025-11 | Benchmark (546 Q) for visual CoT requiring intermediate visual images | `MIRA_2025_QuadrantI.md` | 🆕 |
@@ -43,6 +43,7 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 | 24 | **VC-STaR** | arXiv 2026 | 2026-03 | Visual contrastive self-improving; VisCoR-55K dataset to mitigate hallucinations | `VC-STaR_2026_QuadrantI.md` | 🆕 |
 | 25 | **Zooming w/o Zooming** | arXiv 2026 | 2026-02 | Region-to-image distillation; agentic zooming → single forward pass; ZoomBench | `ZoomingWithoutZooming_2026_QuadrantI.md` | 🆕 |
 | 26 | **AVAR** | arXiv 2026 | 2026-03 | Visual Attention Score (VAS) + attention-guided cold-start; +7.0% avg on 7 benchmarks | `AVAR_2026_QuadrantI.md` | 🆕 |
+| 27 | **MobileWorldBench** | arXiv 2025 | 2025-12 | Semantic world model benchmark + 1.4M transition corpus for mobile agents | `MobileWorldBench_2025_QuadrantI.md` | 🆕 |
 
 **Characteristics**:
 - Representation: Textual (free-form CoT, structured stages, reflections)
@@ -54,6 +55,7 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 - *Structured Stages*: LLaVA-CoT, Insight-V
 - *PRM/Process Supervision*: VisualPRM, Critic-V, Improve VLM CoT
 - *Benchmarks/Datasets*: Visual CoT, R-CoT
+- *Semantic World Models*: MobileWorldBench
 
 ---
 
@@ -73,11 +75,11 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 | 9 | **OctoTools** | ICLR 2025 (WS) | 2025 | Extensible agentic framework with standardized tool cards and planner | `OctoTools_2025_QuadrantII.md` | ✅ |
 | 10 | **AssistGUI** | CVPR 2024 | 2024 | Desktop GUI automation via Actor-Critic + GUI Parser for task planning | `AssistGUI_2024_QuadrantII.md` | ✅ |
 | 11 | **CogAgent** | CVPR 2024 | 2024 | VLM for GUI agents with dual-encoder for high-res screenshots | `CogAgent_2024_QuadrantII.md` | ✅ |
-| 12 | **ToolRL** | arXiv 2025 | 2025 | Systematic study of reward design for tool-selection training via GRPO | *(note pending)* | ⏳ |
-| 13 | **VisRAG** | ICLR 2025 | 2025 | VLM-based visual page retrieval as tool for multimodal document RAG | *(note pending)* | ⏳ |
-| 14 | **ChartAgent** | arXiv 2025 | 2025 | TIR-based chart understanding with 14+ visual tools; Evidence Package output | *(note pending)* | ⏳ |
-| 15 | **LongVideoAgent** | arXiv 2025 | 2025 | Master-Grounding-Vision 3-layer multi-agent with GRPO for long video QA | *(note pending)* | ⏳ |
-| 16 | **OmniParser** | arXiv 2024 | 2024 | GUI screen parsing as grounding tool (region detection + semantic captioning) | *(note pending)* | ⏳ |
+| 12 | **ToolRL** | arXiv 2025 | 2025 | Systematic study of reward design for tool-selection training via GRPO | `ToolRL_2025_QuadrantII.md` | ✅ |
+| 13 | **VisRAG** | ICLR 2025 | 2025 | VLM-based visual page retrieval as tool for multimodal document RAG | `VisRAG_2025_QuadrantII.md` | ✅ |
+| 14 | **ChartAgent** | arXiv 2025 | 2025 | TIR-based chart understanding with 14+ visual tools; Evidence Package output | `ChartAgent_2025_QuadrantII.md` | ✅ |
+| 15 | **LongVideoAgent** | arXiv 2025 | 2025 | Master-Grounding-Vision 3-layer multi-agent with GRPO for long video QA | `LongVideoAgent_2025_QuadrantII.md` | ✅ |
+| 16 | **OmniParser** | arXiv 2024 | 2024 | GUI screen parsing as grounding tool (region detection + semantic captioning) | `OmniParser_2024_QuadrantII.md` | ✅ |
 | 17 | **VISTA-R1** | arXiv 2025 | 2025-11 | Unified agentic RL for tool-integrated VLM; 7 task types, 13 datasets | `VISTA-R1_2025_QuadrantII.md` | 🆕 |
 | 18 | **OpenThinkIMG** | arXiv 2025 | 2025-05 | Open-source V-ToolRL framework; beats GPT-4.1 on chart reasoning | `OpenThinkIMG_2025_QuadrantII.md` | 🆕 |
 | 19 | **Sherlock Workflow** | arXiv 2025 | 2025-11 | Reliable agentic workflow execution with selective verification + speculative exec | `Sherlock_AgenticWorkflow_2025_QuadrantII.md` | 🆕 |
@@ -109,15 +111,19 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 | 5 | **DMLR** | arXiv 2025 | 2025 | Dynamic multimodal latent reasoning with confidence-guided test-time optimization | `DMLR_2025_QuadrantIII.md` | ✅ |
 | 6 | **LLaVA-SG** | arXiv 2024 | 2024 | Scene graph as visual semantic expression injected into VLM reasoning | `LLaVA-SG_2024_QuadrantIII.md` | ✅ |
 | 7 | **Coconut** | arXiv 2024 | 2024 | Continuous latent thought space (text-only LLM precursor; cited in Background) | `Coconut_2024_QuadrantIII.md` | ✅ |
-| 8 | **G2** | arXiv 2025 | 2025 | Generative scene graph construction for visual commonsense answering | *(note pending)* | ⏳ |
-| 9 | **COGT** | ICLR 2025 | 2025 | Causal Graphical Models constraining VLM decoding order for compositional understanding | *(note pending)* | ⏳ |
-| 10 | **Artemis** | arXiv 2025 | 2025 | (label, bbox) structured spatial token pairs as intermediate reasoning steps | *(note pending)* | ⏳ |
-| 11 | **Concept-RuleNet** | arXiv 2025 | 2025 | Visual concepts → First-Order Logic rules; neuro-symbolic reasoning | *(note pending)* | ⏳ |
-| 12 | **Chain-of-Table** | ICLR 2024 | 2024 | Evolving tabular intermediate representation in the reasoning chain | *(note pending)* | ⏳ |
+| 8 | **G2** | arXiv 2025 | 2025 | Generative scene graph construction for visual commonsense answering | `G2_2025_QuadrantIII.md` | ✅ |
+| 9 | **COGT** | ICLR 2025 | 2025 | Causal Graphical Models constraining VLM decoding order for compositional understanding | `COGT_2025_QuadrantIII.md` | ✅ |
+| 10 | **Artemis** | arXiv 2025 | 2025 | (label, bbox) structured spatial token pairs as intermediate reasoning steps | `Artemis_2025_QuadrantIII.md` | ✅ |
+| 11 | **Concept-RuleNet** | arXiv 2025 | 2025 | Visual concepts → First-Order Logic rules; neuro-symbolic reasoning | `ConceptRuleNet_2025_QuadrantIII.md` | ✅ |
+| 12 | **Chain-of-Table** | ICLR 2024 | 2024 | Evolving tabular intermediate representation in the reasoning chain | `ChainOfTable_2024_QuadrantIII.md` | ✅ |
 | 13 | **Mario** | arXiv 2026 | 2026-03 | Graph-conditioned VLM with modality-adaptive routing for multimodal graphs | `Mario_2026_QuadrantIII.md` | 🆕 |
 | 14 | **StruVis** | arXiv 2026 | 2026-03 | Textualized structured vision as intermediate state for T2I reasoning | `StruVis_2026_QuadrantIII.md` | 🆕 |
 | 15 | **SpatialMath** | arXiv 2026 | 2026-01 | Spatial comprehension injected into symbolic reasoning chain for geometry | `SpatialMath_2026_QuadrantIII.md` | 🆕 |
 | 16 | **Graph-of-Mark** | arXiv 2026 | 2026-03 | Scene graph overlay on pixels as visual prompt for spatial reasoning | `Graph-of-Mark_2026_QuadrantIII.md` | 🆕 |
+| 17 | **ViMo** | arXiv 2025 | 2025-04 | Visual GUI world model; current GUI + action → next GUI image via STR decomposition | `ViMo_2025_QuadrantIII.md` | 🆕 |
+| 18 | **MobileDreamer** | arXiv 2026 | 2026-01 | Textual sketch world model + rollout imagination for long-horizon GUI agents | `MobileDreamer_2026_QuadrantIII.md` | 🆕 |
+| 19 | **WebDreamer** | arXiv 2024 / TMLR 2025 | 2024 | Model-based planning for web agents via imagined webpage transitions | `WebDreamer_2024_QuadrantIII.md` | 🆕 |
+| 20 | **Computer-Using World Model** | arXiv 2026 | 2026-02 | Two-stage desktop UI world model for action search in Office software | `ComputerUsingWorldModel_2026_QuadrantIII.md` | 🆕 |
 
 **Characteristics**:
 - Representation: Structured (scene graphs, latent vectors, typed visual tokens, injection logs)
@@ -129,6 +135,7 @@ This document tracks all papers for the survey "From Explanations to Evidence: A
 - *Latent Vectors (opaque continuous)*: MCOUT, LaRe
 - *Typed Visual Tokens (decodable)*: CoVT
 - *Dynamic Injection + Optimization*: DMLR
+- *Predictive GUI / Web / Desktop World Models*: ViMo, MobileDreamer, WebDreamer, Computer-Using World Model
 - *Background reference (text-only precursor)*: Coconut
 
 **Interpretability Spectrum (Q3)**:
@@ -142,7 +149,7 @@ CCoT / LLaVA-SG (highest) > CoVT (medium) > DMLR (partial audit trail) > LaRe > 
 | # | Paper | Venue | Year | Key Idea | Note File | Status |
 |---|-------|-------|------|----------|-----------|--------|
 | 1 | **Visual Sketchpad** | NeurIPS 2024 | 2024 | Sketch as structured CoT; specialist vision models verify sketch claims | `VisualSketchpad_2024_QuadrantIV.md` | 📌 Anchor |
-| 2 | **DeepEyesV2** | arXiv 2025 | 2025 | Code execution + web search evidence loop; two-stage cold-start + RL training | *(placeholder; note file pending)* | 📌 Anchor |
+| 2 | **DeepEyesV2** | arXiv 2025 | 2025 | Code execution + web search evidence loop; two-stage cold-start + RL training | `DeepEyesV2_2025_QuadrantIV.md` | 📌 Anchor |
 | 3 | **ViperGPT** | ICCV 2023 | 2023 | Python program synthesis for visual reasoning; code execution as verification | `ViperGPT_2023_QuadrantIV.md` | ✅ |
 | 4 | **VDebugger** | EMNLP 2024 | 2024 | Execution-feedback debugging of visual programs; critic-refiner framework | `Wu_2024_VDebugger_QuadrantIV.md` | ✅ |
 | 5 | **ViReP** | CVPR 2024 | 2024 | Self-training for visual program synthesis with visual reinforcement | `Khan_2024_ViReP_QuadrantIV.md` | ✅ |
@@ -150,16 +157,18 @@ CCoT / LLaVA-SG (highest) > CoVT (medium) > DMLR (partial audit trail) > LaRe > 
 | 7 | **CodeV** | arXiv 2025 | 2025 | Visual tools as Python code + Tool-Aware Policy Optimization (TAPO) | `Hou_2025_CodeV_QuadrantIV.md` | ✅ |
 | 8 | **CodeDance** | arXiv 2025 | 2025 | Dynamic tool-integrated MLLM using executable code as universal solver | `Song_2025_CodeDance_QuadrantIV.md` | ✅ |
 | 9 | **CodeVision** | arXiv 2025 | 2025 | Unified view for thinking with images via programming vision | `Guo_2025_CodeVision_QuadrantIV.md` | ✅ |
-| 10 | **CodePlot-CoT** | arXiv 2025 | 2025 | Executable matplotlib/Sympy plotting code embedded in each CoT step for math/geometry | *(note pending)* | ⏳ |
-| 11 | **Visual-ARFT** | arXiv 2025 | 2025 | GRPO trains VLM to call image-processing code tools; dual reward (executability + accuracy) | *(note pending)* | ⏳ |
-| 12 | **Visual Programmability** | arXiv 2025 | 2025 | Adaptive selection of executable code vs. direct vision via RL for chart understanding | *(note pending)* | ⏳ |
-| 13 | **Act-Observe-Rewrite** | arXiv 2026 | 2026 | Multimodal LLM rewrites full Python robot controller per trial from visual feedback | *(note pending)* | ⏳ |
-| 14 | **VLM Scientific Discovery** | arXiv 2025 | 2025 | VLM visual checkpoint judge corrects multi-step scientific experiment code chains | *(note pending)* | ⏳ |
+| 10 | **CodePlot-CoT** | arXiv 2025 | 2025 | Executable matplotlib/Sympy plotting code embedded in each CoT step for math/geometry | `CodePlotCoT_2025_QuadrantIV.md` | ✅ |
+| 11 | **Visual-ARFT** | arXiv 2025 | 2025 | GRPO trains VLM to call image-processing code tools; dual reward (executability + accuracy) | `VisualARFT_2025_QuadrantIV.md` | ✅ |
+| 12 | **Visual Programmability** | arXiv 2025 | 2025 | Adaptive selection of executable code vs. direct vision via RL for chart understanding | `VisualProgrammability_2025_QuadrantIV.md` | ✅ |
+| 13 | **Act-Observe-Rewrite** | arXiv 2026 | 2026 | Multimodal LLM rewrites full Python robot controller per trial from visual feedback | `ActObserveRewrite_2026_QuadrantIV.md` | ✅ |
+| 14 | **VLM Scientific Discovery** | arXiv 2025 | 2025 | VLM visual checkpoint judge corrects multi-step scientific experiment code chains | `VLMScientificDiscovery_2025_QuadrantIV.md` | ✅ |
 | 15 | **NS-VLA** | arXiv 2026 | 2026-03 | Neuro-symbolic encoder + solver for robot action planning with online RL | `NS-VLA_2026_QuadrantIV.md` | 🆕 |
 | 16 | **ARM2** | arXiv 2025 | 2025-10 | Adaptive code reasoning with 70%+ token reduction; executable multimodal reasoning | `ARM2_2025_QuadrantIV.md` | 🆕 |
 | 17 | **VLAgent** | arXiv 2025 | 2025-06 | Neurosymbolic agent: SS-parser → structured plan → executable code → verification | `VLAgent_2025_QuadrantIV.md` | 🆕 |
 | 18 | **MM-Zero** | arXiv 2026 | 2026-03 | Zero-data self-evolving VLM: Proposer→Coder→Solver; executable code as reward | `MM-Zero_2026_QuadrantIV.md` | 🆕 |
 | 19 | **Visual-ERM** | arXiv 2026 | 2026-03 | Visual equivalence reward model; code→render→compare; GRPO RL; VC-RewardBench | `Visual-ERM_2026_QuadrantIV.md` | 🆕 |
+| 20 | **gWorld / Generative Visual Code Mobile World Models** | arXiv 2026 | 2026-02 | Renderable code predicts next GUI state; executable world model for mobile agents | `GenerativeVisualCodeMobileWorldModels_2026_QuadrantIV.md` | 🆕 |
+| 21 | **Code2World** | arXiv 2026 | 2026-02 | Renderable-code GUI world model with render-aware RL for mobile navigation | `Code2World_2026_QuadrantIV.md` | 🆕 |
 
 **Characteristics**:
 - Representation: Structured (programs, sketches, state logs, executable code)
@@ -170,6 +179,7 @@ CCoT / LLaVA-SG (highest) > CoVT (medium) > DMLR (partial audit trail) > LaRe > 
 - *Program Synthesis*: ViperGPT, ViReP, RECODE
 - *Execution Debugging*: VDebugger
 - *Code + Tools*: DeepEyesV2, CodeV, CodeDance, CodeVision
+- *Executable World Models*: gWorld, Code2World
 - *Sketch-based*: Visual Sketchpad
 
 ---
@@ -178,11 +188,11 @@ CCoT / LLaVA-SG (highest) > CoVT (medium) > DMLR (partial audit trail) > LaRe > 
 
 | Quadrant | Papers | Anchors | Fully Analyzed | Latest arXiv (2025.05+) |
 |----------|--------|---------|----------------|------------------------|
-| Q1: Text-only CoT | 26 | 1 (CURE) | 26/26 ✅ | 10 🆕 |
+| Q1: Text-only CoT | 27 | 1 (CURE) | 27/27 ✅ | 11 🆕 |
 | Q2: Text + Tools | 21 | 1 (VideoAgent) | 21/21 ✅ | 5 🆕 |
-| Q3: Structured w/o Tools | 16 | 1 (MCOUT) | 16/16 ✅ | 4 🆕 |
-| Q4: Structured + Tools | 19 | 2 (VisualSketchpad, DeepEyesV2) | 19/19 ✅ | 5 🆕 |
-| **Total** | **82** | **5** | **82/82** ✅ | **24** 🆕 |
+| Q3: Structured w/o Tools | 20 | 1 (MCOUT) | 20/20 ✅ | 6 🆕 |
+| Q4: Structured + Tools | 21 | 2 (VisualSketchpad, DeepEyesV2) | 21/21 ✅ | 7 🆕 |
+| **Total** | **89** | **5** | **89/89** ✅ | **29** 🆕 |
 
 ---
 
@@ -190,6 +200,7 @@ CCoT / LLaVA-SG (highest) > CoVT (medium) > DMLR (partial audit trail) > LaRe > 
 
 - 📌 Anchor: Representative anchor paper from proposal
 - ✅ Categorized: Fully analyzed with complete paper note
+- 🆕 Newly added in the latest pass with note file present
 - 📖 Reading: Currently being analyzed
 - ⏳ Pending: Added to database but note not yet created
 - 🔍 Search: Need to locate/verify
@@ -220,12 +231,12 @@ The following dimensions are assessed in each paper note:
 - [x] Need more Quadrant IV papers — **RESOLVED: 9 papers**
 
 ### Remaining Gaps
-- [ ] **DeepEyesV2 note**: Upgrade from placeholder to full note
 - [ ] **Benchmarks section**: Need 3-5 papers focused on process-level benchmarks
 - [ ] **Applications section**: Need 2-3 papers on safety-critical domains
+- [ ] **World-model breadth**: Decide whether to cite only the current 7-paper branch or add 1-2 more web/computer-use neighbors
 
 ### Priority Next Action
-→ **Integrate all paper notes into `survey_paper.md` Section 4**
+→ **Expand citations and evidence support around the new world-model subsection in `survey_paper.md`**
 
 ### Round 2 Additions (2026-03-10)
 | Quadrant | New Papers Added |

@@ -3,6 +3,10 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "$REPO_ROOT"
+
 echo "=== VisualWebArena Dataset Setup ==="
 
 # Clone VisualWebArena if not already done
@@ -41,4 +45,4 @@ echo "=== Setup Complete ==="
 echo "Hard negative pairs saved to: data/hard_negatives/hard_negatives.json"
 echo ""
 echo "Next step: Run training"
-echo "  ./scripts/train.sh"
+echo "  ./cfd_prm/scripts/train.sh"

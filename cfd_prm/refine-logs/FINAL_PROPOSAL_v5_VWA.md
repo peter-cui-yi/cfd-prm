@@ -144,7 +144,7 @@ L calib = -log σ(s_ref - s_dev)  softmin aggregation
 
 ## Next Steps
 
-1. Run `./scripts/setup_visualwebarena.sh`
+1. Run `./cfd_prm/scripts/setup_visualwebarena.sh` (from repository root)
 2. Verify data format + screenshot extraction
 3. Launch pilot training (Exp 1.1)
 4. Validate t* definition on VWA trajectories

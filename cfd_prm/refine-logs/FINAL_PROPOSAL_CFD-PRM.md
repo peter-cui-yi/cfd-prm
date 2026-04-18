@@ -1,10 +1,12 @@
 # FINAL PROPOSAL: CFD-PRM
 
-## Checkpoint-First-Divergence Process Reward Model for Multimodal Agentic Reasoning
+## Checkpoint-First-Divergence Process Reward Model for Web/GUI Agents
 
-**Version**: v4.0 (AC Revision-Enhanced)
+**Version**: v5.0 (VisualWebArena Scope)
 **Target Venue**: NeurIPS/ICLR 2026 Main Track
-**Status**: Ready for implementation (8.2/10 AC review - ACCEPT)
+**Status**: Ready for implementation
+
+**Key Change**: Switched from Agentic-MME (not publicly available) to VisualWebArena (public dataset)
 
 ---
 
@@ -32,15 +34,16 @@ Current multimodal Process Reward Models (PRMs) fail to detect **answer-correct 
 
 - Compute: 4xA800 GPUs, 40 days
 - Backbone: 7B LoRA step scorer (Qwen2.5-VL-7B)
-- Data: Agentic-MME (418 tasks, 2000+ checkpoints)
+- Data: **VisualWebArena** (3,894 tasks, ~45K steps) + OOD validation (Mind2Web)
 - Venue: NeurIPS/ICLR main track
+- **Scope**: Web/GUI agent process reward modeling (not "general visual agent")
 
 ### Success Condition
 
 1. **Method**: CFD-PRM improves over baselines on discriminative + intervention metrics
-2. **Transfer**: OOD-Tool + OOD-Domain + Human-Verified subsets show real generalization
+2. **Transfer**: OOD validation (Mind2Web or WebArena) shows cross-domain capability
 3. **Theory**: Controlled experiments validate theoretical predictions (Prop 1-3)
-4. **Impact**: Wrong-Evidence Success reduced by >50% (15% → 5%)
+4. **Impact**: Success rate on web navigation tasks improved by >5%
 
 ---
 
@@ -51,13 +54,18 @@ Current multimodal Process Reward Models (PRMs) fail to detect **answer-correct 
 **One-sentence**: We train a step-level PRM on first checkpoint-failure points of agent trajectory pairs.
 
 **Why novel**:
-- First PRM to use **human-annotated process checkpoints** (Agentic-MME) as supervision signal
+- First PRM to use **web navigation trajectories with success/failure labels** as supervision signal for GUI agents
 - First-divergence loss focuses gradient on information-maximal step (t*), not diluted across T steps
-- Generalizes CG-PRM from grounding-schema divergence to checkpoint-based divergence
+- **Domain**: Web/GUI agent process reward modeling (explicitly scoped, not "general visual agent")
 
 **Theoretical Guarantee (Prop 1)**:
 - Gradient SNR dilution: All-Steps supervision has SNR ∝ 1/T, First-Divergence has SNR independent of T
 - Sample complexity: All-Steps requires O(T/ε²), First-Divergence requires O(1/ε²)
+
+**Scope Clarification**:
+- Method is domain-agnostic (theory applies to any step-level trajectory)
+- Empirical validation: VisualWebArena (largest public multimodal web agent dataset)
+- OOD experiment: Mind2Web transfer validates cross-domain capability
 
 ---
 

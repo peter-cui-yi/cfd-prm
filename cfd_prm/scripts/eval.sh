@@ -3,10 +3,14 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "$REPO_ROOT"
+
 echo "=== CFD-PRM Evaluation ==="
 
 if [ -z "$1" ]; then
-    echo "Usage: ./scripts/eval.sh <checkpoint_path>"
+    echo "Usage: ./cfd_prm/scripts/eval.sh <checkpoint_path>"
     exit 1
 fi
 

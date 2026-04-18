@@ -21,13 +21,12 @@ This guide explains how to use VisualWebArena as an alternative dataset for CFD-
 ### Option 1: Automated Setup (Recommended)
 
 ```bash
-# Clone CFD-PRM repo (if not already done)
-git clone https://github.com/peter-cui-yi/cfd-prm.git
-cd cfd-prm
+# From the repository root:
+git clone <your-repo-url>
+cd <repo-root>
 
-# Run setup script
-chmod +x scripts/setup_visualwebarena.sh
-./scripts/setup_visualwebarena.sh
+chmod +x cfd_prm/scripts/setup_visualwebarena.sh
+./cfd_prm/scripts/setup_visualwebarena.sh
 ```
 
 This will:

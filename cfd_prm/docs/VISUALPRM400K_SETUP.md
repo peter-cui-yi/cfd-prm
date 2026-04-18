@@ -19,13 +19,12 @@ This guide explains how to use VisualPRM400K dataset for CFD-PRM training.
 ### Option 1: Automated Setup (Recommended)
 
 ```bash
-# Clone CFD-PRM repo (if not already done)
-git clone https://github.com/peter-cui-yi/cfd-prm.git
-cd cfd-prm
+# Clone this repository (if not already done), then from the repo root:
+git clone <your-repo-url>
+cd <repo-root>
 
-# Run setup script
-chmod +x scripts/setup_visualprm400k.sh
-./scripts/setup_visualprm400k.sh
+chmod +x cfd_prm/scripts/setup_visualprm400k.sh
+./cfd_prm/scripts/setup_visualprm400k.sh
 ```
 
 This will:
@@ -207,4 +206,4 @@ Estimated GPU hours for CFD-PRM training on VisualPRM400K:
 
 - VisualPRM Paper: https://internvl.github.io/blog/2025-03-13-VisualPRM/
 - VisualPRM400K HuggingFace: https://huggingface.co/datasets/OpenGVLab/VisualPRM400K
-- CFD-PRM Proposal: `refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md`
+- CFD-PRM Proposal: `cfd_prm/refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md`

@@ -144,7 +144,7 @@ L calib = -log σ(softmin(τ⁺) - softmin(τ⁻))
 
 ## Next Steps
 
-1. Run `./scripts/setup_visualprm400k.sh`
+1. Run `./cfd_prm/scripts/setup_visualprm400k.sh` (from repository root)
 2. Verify paired structure (ref vs dev per question)
 3. Launch pilot training (Exp 1.1)
 4. Add PRM800K for OOD validation

@@ -29,7 +29,7 @@
 
 | 组件 | 状态 | 文件路径 |
 |------|------|----------|
-| Proposal v6.0 | ✅ | `refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md` |
+| Proposal v6.0 | ✅ | `cfd_prm/refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md` |
 | Model (Qwen2.5-VL + LoRA) | ✅ | `cfd_prm/models/step_scorer.py` |
 | Loss (CFD + Calibration) | ✅ | `cfd_prm/losses/checkpoint_first_divergence.py` |
 | Data Adapter | ✅ | `cfd_prm/data/visualprm400k_adapter.py` |
@@ -62,8 +62,8 @@
 
 **代码**:
 ```python
-# 1. 下载数据
-./scripts/setup_visualprm400k.sh
+# 1. 下载数据（在仓库根目录执行）
+./cfd_prm/scripts/setup_visualprm400k.sh
 
 # 2. 完整性检查
 python -c "
@@ -373,8 +373,8 @@ print(f'CFD: {auroc_cfd:.3f}, Matched: {auroc_matched:.3f}')
 ## Quick Start Commands
 
 ```bash
-# 1. Setup
-./scripts/setup_visualprm400k.sh
+# 1. Setup（仓库根目录）
+./cfd_prm/scripts/setup_visualprm400k.sh
 
 # 2. Gate 1: Data Integrity
 python -c "from cfd_prm.data.visualprm400k_adapter import *; check_integrity()"
@@ -397,12 +397,13 @@ python -m cfd_prm.eval.discriminative_metrics --checkpoint outputs/gate4_seed42 
 
 | 文件 | 用途 |
 |------|------|
-| `refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md` | 完整 proposal |
+| `cfd_prm/refine-logs/FINAL_PROPOSAL_v6_VisualPRM.md` | 完整 proposal |
 | `cfd_prm/README.md` | 项目 README + Validity Assurance |
 | `cfd_prm/eval/EVALUATION_PROTOCOL.md` | Dual-Track 评估协议 |
-| `EXPERIMENT_PLAN_VALIDATION.md` | 本文件 |
+| `cfd_prm/docs/EXPERIMENT_PLAN_VALIDATION.md` | Gate 与预验证检查 |
+| `cfd_prm/docs/EXPERIMENT_PLAN_FINAL.md` | 本文件（完整实验计划） |
 
 ---
 
 **Status**: Ready to start Gate 1  
-**Next Action**: Run `./scripts/setup_visualprm400k.sh` and validate data integrity
+**Next Action**: Run `./cfd_prm/scripts/setup_visualprm400k.sh` and validate data integrity

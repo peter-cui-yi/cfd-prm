@@ -19,10 +19,10 @@ This guide walks you through setting up the training environment on a remote ser
 # SSH into your server
 ssh your_username@your_server
 
-# Clone the repository
+# Clone this monorepo and enter it
 cd /path/to/your/workspace
-git clone https://github.com/peter-cui-yi/cfd-prm.git
-cd cfd-prm
+git clone <your-repo-url>
+cd <repo-root>
 ```
 
 ---
@@ -43,8 +43,8 @@ pip install --upgrade pip
 ## Step 3: Install Dependencies
 
 ```bash
-# Install core dependencies
-pip install -r requirements.txt
+# Install core dependencies (repo root)
+pip install -r cfd_prm/requirements.txt
 
 # Verify installation
 python -c "import torch; import transformers; print('OK')"
@@ -155,7 +155,7 @@ git pull origin main
 ### Import errors:
 ```bash
 # Reinstall dependencies
-pip install -r requirements.txt --force-reinstall
+pip install -r cfd_prm/requirements.txt --force-reinstall
 ```
 
 ### Slow data loading:
