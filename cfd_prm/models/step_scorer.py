@@ -7,9 +7,10 @@ Outputs step-level scores for process reward modeling.
 
 import torch
 import torch.nn as nn
+import os
 from typing import Dict, List, Optional, Tuple
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
-from peft import LoraConfig, get_peft_model
+from peft import LoraConfig, get_peft_model, PeftModel
 
 
 class StepScorer(nn.Module):
@@ -28,6 +29,8 @@ class StepScorer(nn.Module):
         lora_target_modules: Optional[List[str]] = None,
         freeze_vision: bool = True,
         score_head_hidden_size: int = 256,
+        pooling: str = "mean",
+        device_map: Optional[str] = None,
     ):
         """
         Args:
@@ -38,15 +41,36 @@ class StepScorer(nn.Module):
             lora_target_modules: Target modules for LoRA
             freeze_vision: Whether to freeze vision encoder
             score_head_hidden_size: Hidden size of score prediction head
+            pooling: Pooling strategy ("mean" or "last")
+            device_map: Device mapping (None for manual placement)
         """
         super().__init__()
 
+        self.pooling = pooling
+
         # Base model
-        self.base_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-            model_name,
-            torch_dtype=torch.bfloat16,
-            device_map="auto",
-        )
+        if device_map:
+            self.base_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                model_name,
+                torch_dtype=torch.bfloat16,
+                device_map=device_map,
+            )
+        else:
+            self.base_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                model_name,
+                torch_dtype=torch.bfloat16,
+            )
+
+        # Enable gradient checkpointing BEFORE applying LoRA
+        # Use non-reentrant checkpointing which is compatible with DDP
+        if hasattr(self.base_model.model, 'language_model'):
+            self.base_model.model.language_model.gradient_checkpointing_enable(
+                gradient_checkpointing_kwargs={"use_reentrant": False}
+            )
+        elif hasattr(self.base_model, 'gradient_checkpointing_enable'):
+            self.base_model.gradient_checkpointing_enable(
+                gradient_checkpointing_kwargs={"use_reentrant": False}
+            )
 
         # Freeze vision encoder if requested
         if freeze_vision:
@@ -69,20 +93,24 @@ class StepScorer(nn.Module):
             target_modules=lora_target_modules,
         )
 
-        self.base_model.model = get_peft_model(
-            self.base_model.model,
+        # Apply LoRA to the entire model
+        self.base_model = get_peft_model(
+            self.base_model,
             lora_config,
             adapter_name="default",
         )
 
-        # Score prediction head
+        # Get the device of base_model
+        model_device = next(self.base_model.parameters()).device
+
+        # Score prediction head (on same device as base_model, same dtype)
         hidden_size = self.base_model.config.hidden_size
         self.score_head = nn.Sequential(
             nn.Linear(hidden_size, score_head_hidden_size),
             nn.ReLU(),
             nn.Dropout(0.1),
             nn.Linear(score_head_hidden_size, 1),
-        )
+        ).to(model_device, dtype=torch.bfloat16)
 
     def forward(
         self,
@@ -104,7 +132,7 @@ class StepScorer(nn.Module):
             scores: [batch_size] scalar scores in [0, 1]
         """
         # Get hidden states from base model
-        outputs = self.base_model.model(
+        outputs = self.base_model(
             input_ids=input_ids,
             attention_mask=attention_mask,
             pixel_values=pixel_values,
@@ -115,11 +143,18 @@ class StepScorer(nn.Module):
         # Use last hidden state
         hidden_states = outputs.hidden_states[-1]  # [batch_size, seq_len, hidden_size]
 
-        # Mean pooling over sequence (excluding padding)
-        mask_expanded = attention_mask.unsqueeze(-1).expand(hidden_states.size()).float()
-        sum_embeddings = (hidden_states * mask_expanded).sum(dim=1)
-        sum_mask = mask_expanded.sum(dim=1).clamp(min=1e-9)
-        pooled = sum_embeddings / sum_mask  # [batch_size, hidden_size]
+        # Pooling over sequence
+        if self.pooling == "last":
+            # Last-token pooling: use the last non-padding token's hidden state
+            seq_lengths = attention_mask.sum(dim=1)  # [batch_size]
+            batch_indices = torch.arange(attention_mask.size(0), device=hidden_states.device)
+            pooled = hidden_states[batch_indices, seq_lengths - 1]  # [batch_size, hidden_size]
+        else:
+            # Mean pooling over sequence (excluding padding)
+            mask_expanded = attention_mask.unsqueeze(-1).expand(hidden_states.size()).to(hidden_states.dtype)
+            sum_embeddings = (hidden_states * mask_expanded).sum(dim=1)
+            sum_mask = mask_expanded.sum(dim=1).clamp(min=1e-9)
+            pooled = sum_embeddings / sum_mask  # [batch_size, hidden_size]
 
         # Predict score
         logits = self.score_head(pooled)  # [batch_size, 1]
@@ -138,16 +173,22 @@ class StepScorer(nn.Module):
             lora_target_modules=config.get("lora_target_modules"),
             freeze_vision=config.get("freeze_vision", True),
             score_head_hidden_size=config.get("score_head_hidden_size", 256),
+            pooling=config.get("pooling", "mean"),
         )
 
     def save_pretrained(self, output_dir: str):
         """Save model to disk."""
+        import os
+        os.makedirs(output_dir, exist_ok=True)
+        # Save PEFT adapter
         self.base_model.save_pretrained(output_dir)
         torch.save(self.score_head.state_dict(), f"{output_dir}/score_head.pt")
 
     def load_pretrained(self, checkpoint_path: str):
         """Load model from checkpoint."""
-        self.base_model.load_pretrained(checkpoint_path)
+        from peft import PeftModel
+        # Load PEFT adapter
+        self.base_model = PeftModel.from_pretrained(self.base_model, checkpoint_path)
         score_head_path = f"{checkpoint_path}/score_head.pt"
-        if torch.path.exists(score_head_path):
+        if os.path.exists(score_head_path):
             self.score_head.load_state_dict(torch.load(score_head_path))

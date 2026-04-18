@@ -1,7 +1,8 @@
 # CFD-PRM Training Configuration
+# Optimized for Qwen2.5-VL-3B
 
 # Model
-model_name: "Qwen/Qwen2.5-VL-7B-Instruct"
+model_name: "/hpc2hdd/home/ycui785/model/qwen2_5_vl_3b"
 lora_r: 64
 lora_alpha: 128
 lora_dropout: 0.05
@@ -14,14 +15,14 @@ data_dir: "data/hard_negatives"
 output_dir: "outputs/cfd_prm"
 
 # Training hyperparameters
-epochs: 5
-batch_size: 32
-learning_rate: 2.0e-5
+epochs: 3
+batch_size: 8
+learning_rate: 1.0e-4
 weight_decay: 0.01
-warmup_ratio: 0.1
+warmup_ratio: 0.05
 
-# Loss weights
-lambda_calib: 0.1
+# Loss weights - reduced calibration to prevent dominance
+lambda_calib: 0.01
 lambda_cfd: 1.0
 
 # Gradient accumulation
@@ -29,8 +30,8 @@ gradient_accumulation_steps: 1
 max_grad_norm: 1.0
 
 # Checkpointing
-checkpoint_every: 1  # epochs
-eval_every: 1  # epochs
+checkpoint_every: 1
+eval_every: 1
 
 # Misc
 seed: 42

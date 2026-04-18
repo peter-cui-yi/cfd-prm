@@ -58,25 +58,32 @@ class CalibrationLoss(nn.Module):
 
     def forward(
         self,
-        scores: torch.FloatTensor,  # [batch_size, seq_len]
-        labels: torch.FloatTensor,  # [batch_size, seq_len], 1=reference, 0=deviated
+        scores: torch.FloatTensor,  # [batch_size, seq_len] or [batch_size]
+        labels: torch.FloatTensor,  # [batch_size] or [batch_size, seq_len], 1=reference, 0=deviated
     ) -> torch.FloatTensor:
         """
         Compute calibration loss.
 
         Args:
-            scores: Step-level scores from PRM
-            labels: 1 for reference trajectory, 0 for deviated
+            scores: Step-level scores from PRM [batch_size, seq_len] or aggregated [batch_size]
+            labels: 1 for reference trajectory, 0 for deviated [batch_size]
 
         Returns:
             loss: Scalar calibration loss
         """
-        # Aggregate scores per trajectory
-        trace_scores = self.softmin_aggregate(scores)  # [batch_size]
+        # Handle 2D scores -> aggregate to 1D
+        if scores.dim() == 2:
+            trace_scores = self.softmin_aggregate(scores)  # [batch_size]
+        else:
+            trace_scores = scores  # Already aggregated [batch_size]
+        
+        # Handle labels (may be 1D or 2D)
+        if labels.dim() == 2:
+            labels = labels[:, 0]  # Take first step label [batch_size]
 
         # Separate reference and deviated scores
-        ref_mask = (labels[:, 0] == 1)  # All steps have same label
-        dev_mask = (labels[:, 0] == 0)
+        ref_mask = (labels == 1)
+        dev_mask = (labels == 0)
 
         ref_scores = trace_scores[ref_mask]
         dev_scores = trace_scores[dev_mask]
